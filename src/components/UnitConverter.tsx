@@ -7,10 +7,12 @@ import {
   Typography,
   Paper,
   Grid,
-  Divider
+  Divider,
+  Button
 } from '@mui/material';
 import { unitCategories } from '../types/units';
 import { Unit, UnitCategory } from '../types/units';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 interface UnitConverterProps {
   categories: UnitCategory[];
@@ -30,6 +32,15 @@ const UnitConverter: React.FC<UnitConverterProps> = ({ categories }) => {
   const handleValueChange = (unitId: string, value: string) => {
     setLastChangedUnit(unitId);
     setValues(prev => ({ ...prev, [unitId]: value }));
+  };
+
+  const handleClear = () => {
+    const category = unitCategories[activeTab];
+    const newValues = { ...values };
+    category.units.forEach(unit => {
+      newValues[unit.id] = '';
+    });
+    setValues(newValues);
   };
 
   useEffect(() => {
@@ -64,6 +75,16 @@ const UnitConverter: React.FC<UnitConverterProps> = ({ categories }) => {
     
     return (
       <>
+        <Box sx={{ display: 'flex', justifyContent: 'flex-end', mb: 2 }}>
+          <Button 
+            variant="outlined" 
+            color="secondary" 
+            onClick={handleClear}
+            startIcon={<DeleteIcon />}
+          >
+            清除 / Clear
+          </Button>
+        </Box>
         <Typography variant="h6" sx={{ mt: 2, mb: 1 }}>常用长度单位 / Common Length Units</Typography>
         <Grid container spacing={2}>
           {category.units
@@ -117,6 +138,16 @@ const UnitConverter: React.FC<UnitConverterProps> = ({ categories }) => {
     
     return (
       <>
+        <Box sx={{ display: 'flex', justifyContent: 'flex-end', mb: 2 }}>
+          <Button 
+            variant="outlined" 
+            color="secondary" 
+            onClick={handleClear}
+            startIcon={<DeleteIcon />}
+          >
+            清除 / Clear
+          </Button>
+        </Box>
         <Typography variant="h6" sx={{ mt: 2, mb: 1 }}>公制 / Metric</Typography>
         <Grid container spacing={2}>
           {category.units
@@ -213,6 +244,16 @@ const UnitConverter: React.FC<UnitConverterProps> = ({ categories }) => {
     
     return (
       <>
+        <Box sx={{ display: 'flex', justifyContent: 'flex-end', mb: 2 }}>
+          <Button 
+            variant="outlined" 
+            color="secondary" 
+            onClick={handleClear}
+            startIcon={<DeleteIcon />}
+          >
+            清除 / Clear
+          </Button>
+        </Box>
         <Typography variant="h6" sx={{ mt: 2, mb: 1 }}>公制 / Metric</Typography>
         <Grid container spacing={2}>
           {category.units
@@ -327,6 +368,16 @@ const UnitConverter: React.FC<UnitConverterProps> = ({ categories }) => {
     
     return (
       <>
+        <Box sx={{ display: 'flex', justifyContent: 'flex-end', mb: 2 }}>
+          <Button 
+            variant="outlined" 
+            color="secondary" 
+            onClick={handleClear}
+            startIcon={<DeleteIcon />}
+          >
+            清除 / Clear
+          </Button>
+        </Box>
         <Typography variant="h6" sx={{ mt: 2, mb: 1 }}>公制 / Metric</Typography>
         <Grid container spacing={2}>
           {category.units
@@ -422,6 +473,16 @@ const UnitConverter: React.FC<UnitConverterProps> = ({ categories }) => {
     
     return (
       <>
+        <Box sx={{ display: 'flex', justifyContent: 'flex-end', mb: 2 }}>
+          <Button 
+            variant="outlined" 
+            color="secondary" 
+            onClick={handleClear}
+            startIcon={<DeleteIcon />}
+          >
+            清除 / Clear
+          </Button>
+        </Box>
         <Typography variant="h6" sx={{ mt: 2, mb: 1 }}>公制 / Metric</Typography>
         <Grid container spacing={2}>
           {category.units
@@ -473,6 +534,16 @@ const UnitConverter: React.FC<UnitConverterProps> = ({ categories }) => {
     
     return (
       <>
+        <Box sx={{ display: 'flex', justifyContent: 'flex-end', mb: 2 }}>
+          <Button 
+            variant="outlined" 
+            color="secondary" 
+            onClick={handleClear}
+            startIcon={<DeleteIcon />}
+          >
+            清除 / Clear
+          </Button>
+        </Box>
         <Typography variant="h6" sx={{ mt: 2, mb: 1 }}>公制 / Metric</Typography>
         <Grid container spacing={2}>
           {category.units
